@@ -1,30 +1,37 @@
 <script>
-	export let name;
-</script>
-
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+	import ContactCard from "./ContactCard.svelte";
+  
+	let name = "Max";
+	let title = "";
+	let image = "";
+	let description = "";
+  </script>
+  
+  <style>
+	#form {
+	  width: 30rem;
+	  max-width: 100%;
 	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+  </style>
+  
+  <div id="form">
+	<div class="form-control">
+	  <label for="userName">User Name</label>
+	  <input type="text" bind:value={name} id="userName" />
+	</div>
+	<div class="form-control">
+	  <label for="jobTitle">Job Title</label>
+	  <input type="text" bind:value={title} id="jobTitle" />
+	</div>
+	<div class="form-control">
+	  <label for="image">Image URL</label>
+	  <input type="text" bind:value={image} id="image" />
+	</div>
+	<div class="form-control">
+	  <label for="desc">Description</label>
+	  <textarea rows="3" bind:value={description} id="desc" />
+	</div>
+  </div>
+  
+  <ContactCard userName={name} jobTitle={title} {description} userImage={image} />
+  
